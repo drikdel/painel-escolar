@@ -4,48 +4,44 @@ import { FaUser, FaLock, FaSignInAlt, FaEye, FaEyeSlash, FaArrowLeft } from 'rea
 import BannerImage from '../assets/bannerhelp.jpg';
 import LogoImage from '../assets/logoHELP.png';
 
-
-
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false); 
+    const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
-
-    const TEST_USER = 'aluno_teste'; 
+    const TEST_USER = 'mateus'; 
     const TEST_PASS = '123456'; 
     
-
-    const USER_DATA = { nome: "Aluno Teste", usuario: TEST_USER };
+    const USER_DATA = { nome: "Mateus", usuario: TEST_USER };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
-        setLoading(true); 
+        setLoading(true);
 
         if (!username || !password) {
             setError('Por favor, preencha o usuário e a senha.');
             setLoading(false);
             return;
         }
-
-
+        
         setTimeout(() => {
             if (username === TEST_USER && password === TEST_PASS) {
-
+ 
                 localStorage.setItem('authToken', 'simulated_token'); 
                 localStorage.setItem('alunoData', JSON.stringify(USER_DATA)); 
                 navigate('/painel'); 
             } else {
 
-                setError('Credenciais inválidas. Tente usar: aluno_teste / 123456.');
+                setError('Credenciais inválidas. Verifique o usuário e a senha.'); 
             }
             setLoading(false); 
         }, 1000); 
     };
+
 
     return (
         <div 
@@ -75,12 +71,11 @@ const Login = () => {
                     </Link>
                 </div>
                 
-                <h2 className="text-3xl font-bold text-center text-white mb-3">
+                <h2 className="text-3xl font-bold text-center text-white mb-6">
                     Acesse sua conta
                 </h2>
-                <p className="text-sm text-gray-400 text-center mb-6">
-                    Use <span className="font-bold text-white">aluno_teste</span> / <span className="font-bold text-white">123456</span> para acesso rápido.
-                </p>
+                
+
                 
                 {error && (
                     <div className="bg-red-500/30 border border-red-500 text-red-200 px-4 py-3 rounded-lg relative mb-4 text-center" role="alert">
@@ -90,7 +85,7 @@ const Login = () => {
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     
-
+                    {/* Campo Usuário */}
                     <div>
                         <label htmlFor="username" className="block text-sm font-medium text-gray-300">Usuário</label>
                         <div className="mt-1 relative rounded-md shadow-sm">
