@@ -1,8 +1,6 @@
-// src/index.js (VERIFIQUE ESTE ARQUIVO)
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom'; // ESTE DEVE SER O ÚNICO LUGAR
+import { BrowserRouter } from 'react-router-dom'; 
 import App from './App.js';
 import './index.css';
 

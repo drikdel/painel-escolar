@@ -8,7 +8,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Credenciais de teste (visíveis na UI)
+
   const TEST_USER = "aluno";
   const TEST_PASS = "123";
 
@@ -25,13 +25,13 @@ export default function Login() {
 
     setLoading(true);
 
-    // Simula delay (como se fosse consulta ao servidor)
+
     setTimeout(() => {
       if (matricula === TEST_USER && senha === TEST_PASS) {
         const alunoObj = { nome: "Aluno Teste", matricula };
         localStorage.setItem("aluno", JSON.stringify(alunoObj));
         console.log("Login bem-sucedido:", alunoObj);
-        // redireciona para painel
+
         navigate("/painel");
       } else {
         setError("Matrícula ou senha incorretas.");
